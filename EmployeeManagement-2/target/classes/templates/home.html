@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<title>Student Management System</title>
+</head>
+<body  >
+<div class="container">
+	<br>
+	<h1 align="center">Employee Management System</h1>
+	<br>
+	<a th:href="@{/addEmployeeForm}"  class="btn btn-secondary"> Add Employee </a></div>
+	<br>
+	<div class="container">
+	<table class="table table-dark table-hover">
+		<thead>
+			<tr class="table-primary" align="center">
+				<th>First Name </th>
+				<th>Last Name </th>
+				<th>Email ID </th>
+				<th>Actions </th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr th:each="employee : ${listEmployees}">
+				<td align="center" th:text="${employee.firstName}"></td>
+				<td align="center" th:text="${employee.lastName}"></td>
+				<td align="center" th:text="${employee.emailID}"></td>
+				<td  align="center"> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-outline-light"> Update </a>
+				 <a th:href="@{/delete/{id}(id=${employee.id})}" class="btn btn-outline-danger"> Delete </a> </td>
+			</tr>
+
+		</tbody>
+
+
+	</table></div>
+</body>
+</html>
